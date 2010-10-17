@@ -1,0 +1,20 @@
+{
+  "name": "Simple WebSocket Client",
+  "version": "0.1.1",
+  "description": "Construct custom Web Socket requests and handle responses to directly test your Web Socket services.",
+  "icons": {
+    "16":  "resources/icon_032.png",
+    "32":  "resources/icon_032.png",
+    "48":  "resources/icon_048.png",
+    "128": "resources/icon_128.png"
+  },
+  
+  "browser_action": {
+    "default_icon": "resources/icon_032.png"
+  },
+  
+  "options_page": "index.html",
+  "background_page": "background.html",
+
+  "permissions": [ "tabs" ]
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Simple Web Socket Client</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<script type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
+</head>
+<body>
+<div id="content">
+	<div id="settingArea">
+		<fieldset>
+			<legend>Server Settings</legend>
+			<div>
+				<label>URL:</label>
+				<input type="text" id="serverUrl" value=""/>
+				<button id="connectButton">Open</button>
+				<button id="disconnectButton">Close</button>
+			</div>
+			<div>
+				<label>Status:</label>
+				<span id="connectionStatus">closed</span>
+			</div>
+		</fieldset>
+	</div>
+	<div id="requestArea">
+		<fieldset>
+			<legend>Request</legend>
+			<div>
+				<textarea id="sendMessage"></textarea>
+			</div>
+			<div>
+				<button id="sendButton" disabled="disabled">Send</button>
+			</div>
+		</fieldset>
+	</div>
+	<div id="messageArea">
+		<fieldset>
+			<legend>Messages [ <a href="#" id="clearMessage">clear</a> ]</legend>
+			<ul id="messages">
+			</ul>
+		</fieldset>
+	</div>
+</div>
+<script>
+var ws = null;
+var connected = false;
+
+var connectionStatus = $('#connectionStatus');
+var connectButton = $('#connectButton');
+var disconnectButton = $('#disconnectButton'); 
+var sendButton = $('#sendButton');
+
+var close = function() {
+	if (ws) {
+		console.log('closing ...');
+		ws.close();
+	}
+	connected = false;
+	connectionStatus.text('closed');
+	sendButton.attr('disabled', 'disabled');
+}
+
+var onOpen = function() {
+		console.log('connected');
+		connected = true;
+		connectionStatus.text('opened');
+		sendButton.removeAttr('disabled');
+};
+
+var onClose = function() {
+		console.log('closed');
+};
+
+var onMessage = function(event) {
+	console.log(event.data);
+	var data = event.data;
+	var msg = $('<li>').text(data);	
+	$('#messages').append(msg);
+};
+
+$(function() {
+	connectButton.click(function(e) {
+		close();
+		
+		var url = $('#serverUrl').val();
+		ws = new WebSocket(url);
+		ws.onopen = onOpen;
+		ws.onclose = onClose;
+		ws.onmessage = onMessage;
+
+		connectionStatus.text('opening ...');
+		connectButton.hide();
+		disconnectButton.show();
+	});
+
+	disconnectButton.click(function(e) {
+		close();
+		connectButton.show();
+		disconnectButton.hide();
+	});
+	
+	sendButton.click(function(e) {
+		var msg = $('#sendMessage').val();
+		ws.send(msg);
+	});
+	
+	$('#clearMessage').click(function(e) {
+		$('#messages').html('');
+	});
+});
+</script>
+</body>
+</html>

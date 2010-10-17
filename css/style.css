@@ -1,0 +1,63 @@
+body {
+	width: 100%;
+	font-family: font-family:'ƒqƒ‰ƒMƒmŠpƒS Pro W3','Hiragino Kaku Gothic Pro','ƒƒCƒŠƒI',Meiryo,'‚l‚r ‚oƒSƒVƒbƒN',sans-serif;
+	background-color: #eee;
+}
+
+fieldset {
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid #777;
+	border-radius: 5px;
+}
+
+legend {
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+fieldset div {
+	margin-bottom: 5px;
+}
+
+textarea {
+	width: 95%;
+	height: 100px;
+	padding: 5px;
+}
+
+#content {
+	padding: 10px;
+}
+
+#settingArea {
+	font-size: 12pt;
+}
+
+#settingArea label {
+	display: inline-block;
+	width: 60px;
+	font-weight: bold;
+}
+
+#serverUrl {
+	width: 300px;
+	padding: 3px;
+	border: 1px solid #999;
+}
+
+#connectButton {
+}
+
+#disconnectButton {
+	display: none;
+}
+
+#messages {
+	width: 100%;
+	max-height: 400px;
+	overflow: auto;
+}
+
