@@ -1,63 +1,69 @@
 body {
 	width: 100%;
 	font-family: font-family:'ÉqÉâÉMÉmäpÉS Pro W3','Hiragino Kaku Gothic Pro','ÉÅÉCÉäÉI',Meiryo,'ÇlÇr ÇoÉSÉVÉbÉN',sans-serif;
+	color: #000;
 	background-color: #eee;
+	font-size: 10pt;
 }
 
 fieldset {
 	margin-bottom: 10px;
-	padding: 10px;
+	padding: 5px 10px;
 	border: 1px solid #777;
-	border-radius: 5px;
 }
 
 legend {
-	padding: 5px;
-	border-radius: 5px;
-	font-size: 12pt;
+	padding: 0 5px;
+	color: #777;
+	font-size: 11pt;
 	font-weight: bold;
 }
 
-fieldset div {
-	margin-bottom: 5px;
+label {
+	color: #777;
+	font-weight: bold;
 }
 
-textarea {
-	width: 95%;
-	height: 100px;
-	padding: 5px;
+#connectionStatus {
+	font-weight: bold;
 }
 
 #content {
 	padding: 10px;
 }
 
-#settingArea {
-	font-size: 12pt;
-}
-
-#settingArea label {
-	display: inline-block;
-	width: 60px;
-	font-weight: bold;
-}
-
 #serverUrl {
-	width: 300px;
-	padding: 3px;
+	width: 225px;
+	padding: 1px 3px;
 	border: 1px solid #999;
-}
-
-#connectButton {
 }
 
 #disconnectButton {
 	display: none;
 }
 
-#messages {
-	width: 100%;
-	max-height: 400px;
-	overflow: auto;
+#requestArea textarea {
+	min-width: 300px;
+	height: 2em;
+	padding: 0 3px;
+	line-height: 150%;
 }
 
+#messages {
+	height: 300px;
+	margin: 5px 0;
+	padding: 0 5px;
+	overflow: auto;
+	border: 1px dotted #777;
+	background-color: #fff;
+	line-height: 150%;
+}
+
+#messages pre {
+	width: 100%;
+	color: #000;
+}
+
+#messages pre.sent {
+	color: #f63;
+}
