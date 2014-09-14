@@ -1,4 +1,3 @@
-<html><head><script>
 var extension_url = 'chrome-extension://'+location.host+'/index.html';
 function isOptionsUrl(url) {
   if(url == extension_url) {
@@ -22,5 +21,3 @@ function goToOptions() {
 chrome.browserAction.onClicked.addListener(function(tab) {
   goToOptions();
 });
-</script>
-</head><body></body></html>
