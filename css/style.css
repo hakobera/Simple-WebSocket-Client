@@ -1,6 +1,6 @@
 body {
 	width: 100%;
-	font-family: font-family:'ƒqƒ‰ƒMƒmŠpƒS Pro W3','Hiragino Kaku Gothic Pro','ƒƒCƒŠƒI',Meiryo,'‚l‚r ‚oƒSƒVƒbƒN',sans-serif;
+	font-family: font-family:'ï¿½qï¿½ï¿½ï¿½Mï¿½mï¿½pï¿½S Pro W3','Hiragino Kaku Gothic Pro','ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I',Meiryo,'ï¿½lï¿½r ï¿½oï¿½Sï¿½Vï¿½bï¿½N',sans-serif;
 	color: #000;
 	background-color: #eee;
 	font-size: 10pt;
@@ -34,6 +34,12 @@ label {
 
 #serverUrl {
 	width: 225px;
+	padding: 1px 3px;
+	border: 1px solid #999;
+}
+
+#protocolHeader {
+	width: 113px;
 	padding: 1px 3px;
 	border: 1px solid #999;
 }
