@@ -13,9 +13,14 @@ new function() {
 
 	var open = function() {
 		var url = serverUrl.val();
-		var protocol = protocolHeader.val();
+		// comma-separated protocol headers are passed as array
+		var protocol = protocolHeader.val().replace(/\s/,'').split(',');;
 		if (protocol) {
-			ws = new WebSocket(url, protocol);
+			try {
+				ws = new WebSocket(url, protocol);
+			} catch (ex) {
+				alert(ex);
+			}
 		} else {
 			ws = new WebSocket(url);
 		}
@@ -51,8 +56,11 @@ new function() {
 		$('#messages').html('');
 	}
 
-	var onOpen = function() {
+	var onOpen = function(evt) {
 		console.log('OPENED: ' + serverUrl.val());
+		if (evt.currentTarget.protocol) {
+			console.log('Sec-WebSocket-Protocol: ' + evt.currentTarget.protocol);
+		}
 		connected = true;
 		connectionStatus.text('OPENED');
 		sendMessage.removeAttr('disabled');
