@@ -14,10 +14,11 @@ new function() {
 	var open = function() {
 		var url = serverUrl.val();
 		// comma-separated protocol headers are passed as array
-		var protocol = protocolHeader.val().replace(/\s/,'').split(',');;
+		var protocol = protocolHeader.val();
 		if (protocol) {
+			var protocols = protocol.replace(/\s/,'').split(',');
 			try {
-				ws = new WebSocket(url, protocol);
+				ws = new WebSocket(url, protocols);
 			} catch (ex) {
 				alert(ex);
 			}
