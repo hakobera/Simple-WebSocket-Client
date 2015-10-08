@@ -13,9 +13,9 @@ new function() {
 
 	var open = function() {
 		var url = serverUrl.val();
-		// comma-separated protocol headers are passed as array
 		var protocol = protocolHeader.val();
 		if (protocol) {
+			// comma-separated protocol headers are passed as array
 			var protocols = protocol.replace(/\s/,'').split(',');
 			try {
 				ws = new WebSocket(url, protocols);
