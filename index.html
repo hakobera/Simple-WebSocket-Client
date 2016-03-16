@@ -1,42 +1,56 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8"/>
-	<title>Simple Web Socket Client</title>
-	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <meta charset="utf-8" />
+    <title>Web Socket Testing</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
+
 <body>
-<div id="content">
-	<fieldset>
-		<legend>Server Location</legend>
-		<div>
-			<label>URL:</label>
-			<input type="text" id="serverUrl" value="ws://"/>
-			<button id="connectButton">Open</button>
-			<button id="disconnectButton">Close</button>
-		</div>
-		<div>
-			<label>Status:</label>
-			<span id="connectionStatus">CLOSED</span>
-		</div>
-	</fieldset>
-	<fieldset id="requestArea">
-		<legend>Request</legend>
-		<div>
-			<textarea id="sendMessage" disabled="disabled"></textarea>
-		</div>
-		<div>
-			<button id="sendButton" disabled="disabled">Send</button>
-			[Shortcut] Ctr + Enter
-		</div>
-	</fieldset>
-	<fieldset id="messageArea">
-		<legend>Message Log <button id="clearMessage">Clear</button></legend>
-		<div id="messages"></div>
-	</fieldset>
-</div>
-<script type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
-<script type="text/javascript" src="index.js"></script>
+    <div id="container">
+        <div id="sidebar">
+            <fieldset>
+                <legend>History
+                    <button id="clearHistory">Clear</button>
+                </legend>
+                <ul id="history">
+                </ul>
+            </fieldset>
+        </div>
+        <div id="content">
+            <fieldset>
+                <legend>URL</legend>
+                <div>
+                    <input type="text" id="serverUrl" value="ws://example.com/websocket" width="500px" />
+                    <button id="connectButton">Open</button>
+                    <button id="disconnectButton">Close</button>
+                </div>
+                <div>
+                    <label>Status:</label>
+                    <span id="connectionStatus">CLOSED</span>
+                </div>
+            </fieldset>
+            <fieldset id="requestArea">
+                <legend>Request</legend>
+                <div>
+                    <textarea id="sendMessage" disabled="disabled" style="margin: 0px; width: 328px; height: 65px;"></textarea>
+                </div>
+                <div>
+                    <button id="sendButton" disabled="disabled">Send</button>
+                    [Ctrl + Enter]
+                </div>
+            </fieldset>
+            <fieldset id="messageArea">
+                <legend>Message Log
+                    <button id="clearMessage">Clear</button>
+                </legend>
+                <div id="messages"></div>
+            </fieldset>
+        </div>
+    </div>
+    <script type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
 </body>
+
 </html>

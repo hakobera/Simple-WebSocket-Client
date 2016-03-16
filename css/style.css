@@ -1,69 +1,114 @@
 body {
-	width: 100%;
-	font-family: font-family:'ÉqÉâÉMÉmäpÉS Pro W3','Hiragino Kaku Gothic Pro','ÉÅÉCÉäÉI',Meiryo,'ÇlÇr ÇoÉSÉVÉbÉN',sans-serif;
-	color: #000;
-	background-color: #eee;
-	font-size: 10pt;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #000;
+    font-size: 10pt;
 }
 
 fieldset {
-	margin-bottom: 10px;
-	padding: 5px 10px;
-	border: 1px solid #777;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #777;
 }
 
 legend {
-	padding: 0 5px;
-	color: #777;
-	font-size: 11pt;
-	font-weight: bold;
+    padding: 0 5px;
+    color: #777;
+    font-size: 11pt;
+    font-weight: bold;
 }
 
 label {
-	color: #777;
-	font-weight: bold;
+    color: #777;
+    font-weight: bold;
 }
 
 #connectionStatus {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 #content {
-	padding: 10px;
+    padding: 10px;
 }
 
 #serverUrl {
-	width: 225px;
-	padding: 1px 3px;
-	border: 1px solid #999;
+    width: 500px;
+    padding: 1px 3px;
+    border: 1px solid #999;
 }
 
 #disconnectButton {
-	display: none;
+    display: none;
 }
 
 #requestArea textarea {
-	min-width: 300px;
-	height: 2em;
-	padding: 0 3px;
-	line-height: 150%;
+    min-width: 300px;
+    height: 2em;
+    padding: 0 3px;
+    /*line-height: 150%;*/
 }
 
 #messages {
-	height: 300px;
-	margin: 5px 0;
-	padding: 0 5px;
-	overflow: auto;
-	border: 1px dotted #777;
-	background-color: #fff;
-	line-height: 150%;
+    height: 300px;
+    margin: 5px 0;
+    padding: 0 5px;
+    overflow: auto;
+    border: 1px dotted #777;
+    background-color: #fff;
+    line-height: 150%;
 }
 
 #messages pre {
-	width: 100%;
-	color: #000;
+    width: 100%;
+    color: #000;
+    margin: 0;
 }
 
 #messages pre.sent {
-	color: #f63;
+    color: #f63;
+}
+
+#sidebar {
+    padding: 0;
+    padding-right: 13px;
+    margin: 0;
+    font-size: 11px;
+    width: 190px;
+    position: absolute;
+    left: 0;
+    border-right: solid 1px #e9eced;
+    height: calc(100vh - 55px);
+}
+
+#content {
+    margin-left: 190px;
+    min-width: 600px
+}
+
+#history {
+    width: 175px;
+    list-style: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+#history a {
+    width: 165px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden
+}
+
+#history li{
+    position: relative;
+}
+
+.removeHistory
+{
+    text-decoration: underline;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
 }

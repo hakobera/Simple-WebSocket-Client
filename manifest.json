@@ -1,8 +1,8 @@
 {
-  "name": "Simple WebSocket Client",
+  "name": "Web Socket Testing",
   "manifest_version": 2,
-  "version": "0.1.3",
-  "description": "Construct custom Web Socket requests and handle responses to directly test your Web Socket services.",
+  "version": "0.1.4",
+  "description": "A Simple tool to help test Web Socket Service",
   "icons": {
     "16":  "resources/icon_032.png",
     "32":  "resources/icon_032.png",
