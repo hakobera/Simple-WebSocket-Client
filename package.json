@@ -1,0 +1,30 @@
+{
+  "name": "web-socket-testing",
+  "version": "1.0.1",
+  "description": "Web Socket Testing application",
+  "main": "eletron/main.js",
+  "scripts": {
+    "start": "electron eletron/main.js",
+    "build": "node eletron/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aar0u/Web-Socket-Testing.git"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial"
+  ],
+  "author": "RageApp",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/aar0u/Web-Socket-Testing/issues"
+  },
+  "homepage": "https://github.com/aar0u/Web-Socket-Testing",
+  "devDependencies": {
+    "electron-packager": "^6.0.0",
+    "electron-prebuilt": "^0.36.0"
+  }
+}
