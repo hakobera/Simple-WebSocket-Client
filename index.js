@@ -103,12 +103,6 @@ new function() {
         $.each(historyItems, function(i, item) {
             addToHistoryList(item);
         });
-
-
-        $('.historyUrl').click(function(e) {
-            serverUrl.val(this.href);
-            sendMessage.val(this.title);
-        });
     };
 
     var removeHistory = function(item) {
@@ -196,6 +190,12 @@ new function() {
                 var link = $(this).parent().find('a');
                 removeHistory({ 'url': link.attr('href'), 'msg': link.attr('title') });
                 localStorage.setItem('history', JSON.stringify(historyItems));
+            });
+
+            historyList.delegate('.historyUrl', 'click', function(e) {
+                serverUrl.val(this.href);
+                sendMessage.val(this.title);
+                e.preventDefault();
             });
 
             serverUrl.keydown(function(e) {
