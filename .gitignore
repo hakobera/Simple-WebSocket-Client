@@ -6,3 +6,5 @@
 *~
 /deletefile.list
 /.project
+dist/
+node_modules/

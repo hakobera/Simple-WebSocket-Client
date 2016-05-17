@@ -1,4 +1,4 @@
-new function() {
+(function() {
     var ws = null;
     var connected = false;
     var historyItems = [];
@@ -24,14 +24,14 @@ new function() {
         serverUrl.attr('disabled', 'disabled');
         connectButton.hide();
         disconnectButton.show();
-    }
+    };
 
     var close = function() {
         if (ws) {
             console.log('CLOSING ...');
             ws.close();
         }
-    }
+    };
 
     var reset = function() {
         connected = false;
@@ -42,11 +42,11 @@ new function() {
         disconnectButton.hide();
         sendMessage.attr('disabled', 'disabled');
         sendButton.attr('disabled', 'disabled');
-    }
+    };
 
     var clearLog = function() {
         $('#messages').html('');
-    }
+    };
 
     var onOpen = function() {
         console.log('OPENED: ' + serverUrl.val());
@@ -69,7 +69,7 @@ new function() {
 
     var onError = function(event) {
         alert(event.type);
-    }
+    };
 
     var addMessage = function(data, type) {
         var msg = $('<pre>').text(data);
@@ -84,13 +84,15 @@ new function() {
             msgBox.removeChild(msgBox.firstChild);
         }
         msgBox.scrollTop = msgBox.scrollHeight;
-    }
+    };
 
     var addToHistoryList = function(item) {
-        historyList.prepend($('<li>').attr('id', item.id).append(
-            $('<a>').attr('href', item.url).attr('title', item.msg).attr('class', 'historyUrl').append(item.url)).append(
-            $('<span>').attr('class', 'removeHistory').append("x")));
-    }
+        var addedLi = $('<li>').attr('id', item.id).append(
+            $('<a>').attr('href', item.url).attr('data-msg', item.msg).attr('title', item.url + '\n\n' + item.msg).attr('class', 'historyUrl').append(item.url)).append(
+            $('<span>').attr('class', 'removeHistory').append("x")).attr('style', 'display: none;').prependTo(historyList);
+
+        addedLi.toggle('slow');
+    };
 
     var loadHistory = function() {
         historyList = $('#history');
@@ -107,14 +109,16 @@ new function() {
 
     var removeHistory = function(item) {
         for (var i = historyItems.length - 1; i >= 0; i--) {
-            if (historyItems[i].url == item.url && historyItems[i].msg == item.msg) {
+            if (historyItems[i].url === item.url && historyItems[i].msg === item.msg) {
                 var selector = 'li#' + historyItems[i].id;
-                $(selector).remove();
+                $(selector).toggle('slow', function(){
+                    $(this).remove();
+                });
 
                 historyItems.splice(i, 1);
             }
         }
-    }
+    };
 
     var guid = function() {
         function s4() {
@@ -124,7 +128,7 @@ new function() {
         }
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
             s4() + '-' + s4() + s4() + s4();
-    }
+    };
 
     var saveHistory = function(msg) {
         var item = { 'id': guid(), 'url': serverUrl.val(), 'msg': msg };
@@ -140,13 +144,13 @@ new function() {
         localStorage.setItem('history', JSON.stringify(historyItems));
 
         addToHistoryList(item);
-    }
+    };
 
     var clearHistory = function() {
         historyItems = [];
         localStorage.clear();
         historyList.empty();
-    }
+    };
 
     WebSocketClient = {
         init: function() {
@@ -188,35 +192,42 @@ new function() {
 
             historyList.delegate('.removeHistory', 'click', function(e) {
                 var link = $(this).parent().find('a');
-                removeHistory({ 'url': link.attr('href'), 'msg': link.attr('title') });
+                removeHistory({ 'url': link.attr('href'), 'msg': link.attr('data-msg') });
                 localStorage.setItem('history', JSON.stringify(historyItems));
             });
 
             historyList.delegate('.historyUrl', 'click', function(e) {
+                window.haha1 = this;
                 serverUrl.val(this.href);
-                sendMessage.val(this.title);
+                sendMessage.val(this.dataset.msg);
                 e.preventDefault();
             });
 
             serverUrl.keydown(function(e) {
-                if (e.which == 13) {
+                if (e.which === 13) {
                     connectButton.click();
                 }
             });
 
             var isCtrl;
             sendMessage.keyup(function(e) {
-                if (e.which == 17) isCtrl = false;
+                if (e.which === 17) {
+                    isCtrl = false;
+                }
             }).keydown(function(e) {
-                if (e.which == 17) isCtrl = true;
-                if (e.which == 13 && isCtrl == true) {
+                if (e.which === 17) {
+                    isCtrl = true;
+                }
+                if (e.which === 13 && isCtrl === true) {
                     sendButton.click();
                     return false;
                 }
             });
         }
     };
-}
+})();
+
+var WebSocketClient;
 
 $(function() {
     WebSocketClient.init();
