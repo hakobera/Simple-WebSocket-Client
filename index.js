@@ -108,12 +108,13 @@
     };
 
     var removeHistory = function(item) {
+        var removeLi = function() {
+            $(this).remove();
+        };
         for (var i = historyItems.length - 1; i >= 0; i--) {
             if (historyItems[i].url === item.url && historyItems[i].msg === item.msg) {
                 var selector = 'li#' + historyItems[i].id;
-                $(selector).toggle('slow', function(){
-                    $(this).remove();
-                });
+                $(selector).toggle('slow', removeLi);
 
                 historyItems.splice(i, 1);
             }
