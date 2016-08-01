@@ -54,6 +54,13 @@ new function() {
 	var onClose = function() {
 		console.log('CLOSED: ' + serverUrl.val());
 		ws = null;
+		connectionStatus.text('CLOSED');
+
+		serverUrl.removeAttr('disabled');
+		connectButton.show();
+		disconnectButton.hide();
+		sendMessage.attr('disabled', 'disabled');
+		sendButton.attr('disabled', 'disabled');
 	};
 	
 	var onMessage = function(event) {
