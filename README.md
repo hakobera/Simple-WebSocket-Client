@@ -6,7 +6,7 @@ and handle responses to directly test your Web Socket services.
 
 ## Extension URL
 
-https://chrome.google.com/extensions/detail/pfdhoblngboilpfeibdedpjgfnlcodoo
+https://addons.mozilla.org/en-US/firefox/addon/simple-websocket-client/
 
 ## License
 
