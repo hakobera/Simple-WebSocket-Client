@@ -20,5 +20,7 @@
     "scripts": [ "background.js" ]
   },
 
-  "permissions": [ "tabs" ]
+  "permissions": [ "tabs" ],
+
+  "homepage_url": "https://github.com/WangFenjin/Simple-WebSocket-Client"
 }

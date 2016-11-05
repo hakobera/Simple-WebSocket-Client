@@ -1,4 +1,4 @@
-var extension_url = 'chrome-extension://'+location.host+'/index.html';
+var extension_url = chrome.extension.getURL("index.html");
 function isOptionsUrl(url) {
   if(url == extension_url) {
     return true;
@@ -7,10 +7,10 @@ function isOptionsUrl(url) {
 }
 // Find options page in all opened tabs
 function goToOptions() {
-  chrome.tabs.getAllInWindow(undefined, function(tabs) {
+  chrome.tabs.query({}, function(tabs) {
     for (var i = 0, tab; tab = tabs[i]; i++) {
       if (tab.url && isOptionsUrl(tab.url)) {
-        chrome.tabs.update(tab.id, {selected: true});
+        chrome.tabs.update(tab.id, {active: true});
         return;
       }
     }
