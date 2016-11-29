@@ -5,6 +5,7 @@ new function() {
 	var serverUrl;
 	var connectionStatus;
 	var sendMessage;
+	var logInstead;
 	
 	var connectButton;
 	var disconnectButton; 
@@ -17,6 +18,7 @@ new function() {
 		ws.onclose = onClose;
 		ws.onmessage = onMessage;
 		ws.onerror = onError;
+		logInstead = $('#logInstead').is(':checked');
 
 		connectionStatus.text('OPENING ...');
 		serverUrl.attr('disabled', 'disabled');
@@ -62,7 +64,12 @@ new function() {
 	};
 	
 	var onError = function(event) {
-		alert(event.data);
+		console.log(event);
+		if(logInstead){
+			console.error('Error! ', event);
+		}else{
+			alert(event.data);
+		}
 	}
 	
 	var addMessage = function(data, type) {
@@ -101,6 +108,7 @@ new function() {
 			
 			sendButton.click(function(e) {
 				var msg = $('#sendMessage').val();
+				logInstead = $('#logInstead').is(':checked');
 				addMessage(msg, 'SENT');
 				ws.send(msg);
 			});
