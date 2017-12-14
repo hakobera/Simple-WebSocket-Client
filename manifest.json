@@ -1,9 +1,9 @@
 {
-  "name": "Web Socket Testing",
+  "name": "WebSocket Test Client",
   "short_name": "wstest",
   "manifest_version": 2,
-  "version": "0.1.7",
-  "description": "A Simple tool to help test Web Socket Service",
+  "version": "0.1.8",
+  "description": "A Simple tool to help test WebSocket Service",
   "icons": {
     "16":  "resources/icon_032.png",
     "32":  "resources/icon_032.png",
