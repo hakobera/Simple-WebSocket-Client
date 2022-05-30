@@ -11,10 +11,10 @@
   },
 
   "browser_action": {
-    "default_icon": "resources/icon_032.png"
+    "default_icon": "resources/icon_032.png",
+    "default_title": "webSocket Client",
+    "default_popup": "index.html"
   },
-
-  "options_page": "index.html",
 
   "background":{
     "scripts": [ "background.js" ]
