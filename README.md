@@ -11,3 +11,11 @@ https://addons.mozilla.org/en-US/firefox/addon/simple-websocket-client/
 ## License
 
 This software is released under the MIT License, see LICENSE.txt.
+
+## Build
+
+```bash
+npm install --global web-ext
+web-ext build
+# upload to AMO
+```
